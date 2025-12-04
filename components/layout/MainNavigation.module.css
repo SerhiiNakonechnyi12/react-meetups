@@ -1,5 +1,6 @@
 .header {
   width: 100%;
+  min-width: 100vw;
   height: 5rem;
   display: flex;
   align-items: center;
@@ -9,7 +10,7 @@
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 4vw, 2rem);
   color: white;
   font-weight: bold;
 }
@@ -36,4 +37,8 @@
 .header a:active,
 .header a.active {
   color: white;
+}
+
+.header a {
+  font-size: clamp(0.9rem, 3vw, 1.5rem);
 }

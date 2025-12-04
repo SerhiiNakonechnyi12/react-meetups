@@ -44,3 +44,9 @@
 .actions button:active {
   background-color: #ffe2ed;
 }
+
+@media (max-width: 500px) {
+  .image {
+    height: 12rem;
+  }
+}
