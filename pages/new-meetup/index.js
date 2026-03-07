@@ -18,7 +18,7 @@ function NewMeetupPage() {
     });
 
     if (!response.ok) {
-      console.error('Server error');
+      console.error('Server error! The cluster fell asleep. Try again later');
       return;
     }
 
