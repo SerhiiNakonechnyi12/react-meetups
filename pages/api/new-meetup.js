@@ -21,6 +21,7 @@ async function handler(req, res) {
     client.close();
 
     res.status(201).json({ message: 'Meetup inserted!' });
+    // return res.status(500).json({ message: 'DB error (mock)' }); // error simulation
   }
 }
 
