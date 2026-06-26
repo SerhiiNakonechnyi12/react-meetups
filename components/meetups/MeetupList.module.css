@@ -3,3 +3,14 @@
   margin: 0;
   padding: 0;
 }
+
+.error {
+  text-align: center;
+  color: #ff4d4f;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ff4d4f;
+  border-radius: 8px;
+  background: #fff1f0;
+}
