@@ -3,4 +3,11 @@
   width: 90%;
   max-width: 40rem;
   margin-top: 8rem;
+  flex: 1;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
