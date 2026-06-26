@@ -9,7 +9,15 @@ function MainNavigation() {
 
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>React Meetups</div>
+      <Link href="/" className={classes.logo}>
+        <a>
+          <img
+            src="/favicon.png"
+            alt="React Meetups Logo"
+            className={classes.logo}
+          />
+        </a>
+      </Link>
       <ul>
         <li>
           <Link href="/">
