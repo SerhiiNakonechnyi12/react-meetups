@@ -10,31 +10,27 @@ function MainNavigation() {
   return (
     <header className={classes.header}>
       <Link href="/" className={classes.logo}>
-        <a>
-          <img
-            src="/favicon.png"
-            alt="React Meetups Logo"
-            className={classes.logo}
-          />
-        </a>
+        <img
+          src="/favicon.png"
+          alt="React Meetups Logo"
+          className={classes.logo}
+        />
       </Link>
       <ul>
         <li>
-          <Link href="/">
-            <a className={router.pathname === '/' ? classes.active : ''}>
-              All Meetups
-            </a>
+          <Link
+            href="/"
+            className={router.pathname === '/' ? classes.active : ''}
+          >
+            All Meetups
           </Link>
         </li>
         <li>
-          <Link href="/new-meetup">
-            <a
-              className={
-                router.pathname === '/new-meetup' ? classes.active : ''
-              }
-            >
-              Add New Meetup
-            </a>
+          <Link
+            href="/new-meetup"
+            className={router.pathname === '/new-meetup' ? classes.active : ''}
+          >
+            Add New Meetup
           </Link>
         </li>
       </ul>

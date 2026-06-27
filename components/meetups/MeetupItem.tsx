@@ -1,5 +1,3 @@
-import { useRouter } from 'next/router';
-
 import classes from './MeetupItem.module.css';
 import Card from '../ui/Card';
 import Link from 'next/link';
@@ -12,8 +10,6 @@ type MeetupItemProps = {
 };
 
 const MeetupItem = ({ id, image, title, address }: MeetupItemProps) => {
-  const router = useRouter();
-
   return (
     <li className={classes.item}>
       <Card>
@@ -25,8 +21,8 @@ const MeetupItem = ({ id, image, title, address }: MeetupItemProps) => {
           <address>{address}</address>
         </div>
         <div className={classes.actions}>
-          <Link href={`/${id}`}>
-            <a className={classes.linkButton}>Show Details</a>
+          <Link href={`/${id}`} className={classes.linkButton}>
+            Show Details
           </Link>
         </div>
       </Card>
