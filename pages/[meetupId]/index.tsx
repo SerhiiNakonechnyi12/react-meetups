@@ -110,6 +110,12 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
     client.close();
 
+    if (!selectedMeetup) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
       props: {
         meetupData: {
