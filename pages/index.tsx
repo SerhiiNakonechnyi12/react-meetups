@@ -67,7 +67,7 @@ export async function getServerSideProps() {
 
     const meetupsCollection = db.collection('meetups');
 
-    const meetups = await meetupsCollection.find().toArray();
+    const meetups = await meetupsCollection.find().sort({ _id: -1 }).toArray();
 
     client.close();
 
