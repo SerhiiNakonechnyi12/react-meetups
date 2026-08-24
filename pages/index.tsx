@@ -50,7 +50,8 @@ function HomePage(props: HomePageProps) {
 //   };
 // }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+export async function getServerSideProps() {
   const DEBUG_FAIL = false; // Set to true to simulate an error loading meetups (e.g., DB failure)
 
   try {
@@ -80,7 +81,7 @@ export async function getStaticProps() {
         })),
         hasError: false,
       },
-      revalidate: 1,
+      // revalidate: 1,
     };
   } catch (error) {
     return {
