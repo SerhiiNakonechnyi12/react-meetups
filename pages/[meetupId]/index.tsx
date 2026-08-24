@@ -48,9 +48,11 @@ function MeetupDetails({ meetupData, hasError }: MeetupDetailsProps) {
 }
 
 export async function getStaticPaths() {
-  const client = await MongoClient.connect(
-    'mongodb+srv://Serhii_N:PgkrfKshvzBo0EEE@cluster0.dizgipf.mongodb.net/meetups?appName=Cluster0',
-  );
+  const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error('MONGODB_URI is not defined');
+  }
+  const client = await MongoClient.connect(uri);
   const db = client.db();
 
   const meetupsCollection = db.collection('meetups');
@@ -95,9 +97,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       throw new Error('Simulated DB failure: showing meetup details failed');
     }
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://Serhii_N:PgkrfKshvzBo0EEE@cluster0.dizgipf.mongodb.net/meetups?appName=Cluster0',
-    );
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error('MONGODB_URI is not defined');
+    }
+    const client = await MongoClient.connect(uri);
     const db = client.db();
 
     const meetupsCollection = db.collection('meetups');

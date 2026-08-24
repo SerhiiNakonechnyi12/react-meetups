@@ -7,9 +7,11 @@ async function handler(req, res) {
   if (req.method === 'POST') {
     const data = req.body;
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://Serhii_N:PgkrfKshvzBo0EEE@cluster0.dizgipf.mongodb.net/meetups?appName=Cluster0'
-    );
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error('MONGODB_URI is not defined');
+    }
+    const client = await MongoClient.connect(uri);
     const db = client.db();
 
     const meetupsCollection = db.collection('meetups');

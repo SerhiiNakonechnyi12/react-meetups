@@ -50,8 +50,7 @@ function HomePage(props: HomePageProps) {
 //   };
 // }
 
-// export async function getStaticProps() {
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const DEBUG_FAIL = false; // Set to true to simulate an error loading meetups (e.g., DB failure)
 
   try {
@@ -60,9 +59,11 @@ export async function getServerSideProps() {
     }
 
     // fetch data from an API
-    const client = await MongoClient.connect(
-      'mongodb+srv://Serhii_N:PgkrfKshvzBo0EEE@cluster0.dizgipf.mongodb.net/meetups?appName=Cluster0',
-    );
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error('MONGODB_URI is not defined');
+    }
+    const client = await MongoClient.connect(uri);
     const db = client.db();
 
     const meetupsCollection = db.collection('meetups');
@@ -81,7 +82,7 @@ export async function getServerSideProps() {
         })),
         hasError: false,
       },
-      // revalidate: 1,
+      revalidate: 1,
     };
   } catch (error) {
     return {
