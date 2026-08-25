@@ -103,9 +103,9 @@ MONGODB_URI=your-mongodb-connection-string
 Screenshots are available in `public/screenshots/`:
 
 ```md
-![Meetup list](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetups-list.png?raw=true)
-![New meetup form](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/new-meetup-form.png?raw=true)
-![Meetup details](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetup-details.png?raw=true)
+![Meetup list](./public/screenshots/meetups-list.png)
+![New meetup form](./public/screenshots/new-meetup-form.png)
+![Meetup details](./public/screenshots/meetup-details.png)
 ```
 
 ## Deployment Notes
