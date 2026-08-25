@@ -94,12 +94,12 @@ npm run dev
 
 ## Скриншоты
 
-Скриншоты ещё не добавлены. Для портфолио их можно разместить в `public/screenshots/` и подключить сюда:
+Скриншоты размещены в `public/screenshots/`:
 
 ```md
-![Список встреч](public/screenshots/meetups-list.png)
-![Форма добавления встречи](public/screenshots/new-meetup-form.png)
-![Детали встречи](public/screenshots/meetup-details.png)
+![Список встреч](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetups-list.png?raw=true)
+![Форма добавления встречи](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/new-meetup-form.png?raw=true)
+![Детали встречи](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetup-details.png?raw=true)
 ```
 
 ## Важно для развёртывания
