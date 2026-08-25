@@ -102,11 +102,9 @@ MONGODB_URI=your-mongodb-connection-string
 
 Screenshots are available in `public/screenshots/`:
 
-```md
 ![Meetup list](./public/screenshots/meetups-list.png)
 ![New meetup form](./public/screenshots/new-meetup-form.png)
 ![Meetup details](./public/screenshots/meetup-details.png)
-```
 
 ## Deployment Notes
 
