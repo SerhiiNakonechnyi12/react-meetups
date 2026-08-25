@@ -1,105 +1,113 @@
 # React Meetups
 
-Небольшое full-stack приложение для просмотра и добавления React-встреч. Проект демонстрирует работу с **Next.js Pages Router**, серверным получением данных из MongoDB, динамическими маршрутами и пользовательскими формами на React.
+A small full-stack application for browsing and adding React meetups. The project demonstrates the use of **Next.js Pages Router**, server-side data fetching from MongoDB, dynamic routes, and React forms.
 
 ## Live Demo
 
-Приложение доступно в развёрнутой версии на Vercel:
+The application is deployed on Vercel:
 
-[Открыть React Meetups](https://react-meetups-three-topaz.vercel.app/)
+[Open React Meetups](https://react-meetups-three-topaz.vercel.app/)
 
-## Возможности
+## Features
 
-- Просмотр списка всех встреч.
-- Переход на отдельную страницу с полным описанием выбранной встречи.
-- Добавление новой встречи через форму: название, изображение, адрес и описание.
-- Клиентская валидация обязательных полей, URL изображения и длины описания.
-- Блокировка повторной отправки формы во время запроса.
-- Уведомления об успешном добавлении и об ошибках через toast.
-- Обработка недоступности базы данных и отсутствующей записи.
-- Адаптивная навигация с выделением активного раздела.
+- Browse a list of all meetups.
+- Open a dedicated page with detailed information about a selected meetup.
+- Add a new meetup using a form with a title, image, address, and description.
+- Client-side validation for required fields, image URLs, and description length.
+- Prevent duplicate form submissions while a request is in progress.
+- Toast notifications for successful submissions and errors.
+- Error handling for unavailable database connections and missing meetups.
+- Responsive navigation with an active section indicator.
 
-## Технологии
+## Technologies
 
-- **Next.js 16** — Pages Router, API Routes, `getStaticProps`, `getStaticPaths`, и ISR.
-- **React 18** и **TypeScript** со строгим режимом проверки.
-- **MongoDB** и официальный драйвер `mongodb` для хранения встреч.
-- **CSS Modules** и глобальные стили для изолированной стилизации компонентов.
-- **react-hot-toast** для пользовательских уведомлений.
+- **Next.js 16** — Pages Router, API Routes, `getStaticProps`, `getStaticPaths`, and ISR.
+- **React 18** and **TypeScript** with strict type checking enabled.
+- **MongoDB** and the official `mongodb` driver for storing meetup data.
+- **CSS Modules** and global styles for isolated component styling.
+- **react-hot-toast** for user notifications.
 
-## Архитектура и технические решения
+## Architecture & Technical Decisions
 
-- Главная страница загружает список встреч на сервере через `getStaticProps`; ISR обновляет данные не реже одного раза в секунду.
-- Детальная страница использует динамический маршрут `/[meetupId]`. Известные идентификаторы генерируются заранее, а `fallback: 'blocking'` позволяет сформировать страницу для новой записи при первом запросе. Для деталей задана ревалидация раз в 10 секунд.
-- API-маршрут `POST /api/new-meetup` сохраняет данные формы в коллекцию `meetups` MongoDB.
-- Правила валидации вынесены из UI в `lib/validation/meetupValidation.ts`, поэтому их можно поддерживать независимо от компонента формы.
-- Общие элементы (`Layout`, навигация, footer и `Card`) отделены от компонентов предметной области встреч.
-- На страницах заданы собственные `title` и `meta description` через `next/head`.
+- The home page fetches the meetup list on the server using `getStaticProps`; ISR revalidates the data at least once per second.
+- The meetup details page uses the dynamic `/{meetupId}` route. Known meetup IDs are generated at build time, while `fallback: 'blocking'` allows pages for newly added meetups to be generated on the first request. The details page is revalidated every 10 seconds.
+- The `POST /api/new-meetup` API route saves submitted meetup data to the `meetups` MongoDB collection.
+- Validation rules are separated from the UI and stored in `lib/validation/meetupValidation.ts`, allowing them to be maintained independently of the form component.
+- Shared elements such as `Layout`, navigation, footer, and `Card` are separated from meetup-specific components.
+- Each page defines its own `title` and `meta description` using `next/head`.
 
-## Что реализовано самостоятельно
+## Implemented Independently
 
-- Страницы списка, создания и деталей встречи, включая динамическую маршрутизацию.
-- Чтение и добавление данных через MongoDB.
-- Серверный API endpoint для создания встреч.
-- Валидация формы, сообщения об ошибках и состояние отправки.
-- Toast-уведомления, сценарии ошибки загрузки и отсутствующей встречи.
-- Компонентная структура, адаптивные стили и активное состояние навигации.
+- List, creation, and meetup details pages, including dynamic routing.
+- Reading and adding meetup data using MongoDB.
+- A server-side API endpoint for creating meetups.
+- Form validation, error handling, and submission state management.
+- Toast notifications, loading error handling, and missing meetup handling.
+- Component structure, responsive styling, and active navigation state.
 
-## Структура проекта
+## Project Structure
 
 ```text
 components/
-  layout/                 # Layout, навигация и footer
-  meetups/                # список, карточка, детали и форма встречи
-  ui/                     # переиспользуемые UI-компоненты
+  layout/                 # Layout, navigation, and footer
+  meetups/                # Meetup list, card, details, and form
+  ui/                     # Reusable UI components
 lib/
-  validation/             # правила валидации формы
+  validation/             # Form validation rules
 pages/
-  api/new-meetup.js       # POST API для создания встречи
-  [meetupId]/index.tsx    # динамическая страница деталей
-  new-meetup/index.tsx    # страница добавления
-  index.tsx               # список встреч
-  _app.tsx                # общий Layout и Toast-контейнер
-  _document.tsx           # HTML-документ и favicon
-public/                   # статические ресурсы
-styles/                   # глобальные CSS-стили
+  api/new-meetup.js       # POST API endpoint for creating meetups
+  [meetupId]/index.tsx    # Dynamic meetup details page
+  new-meetup/index.tsx    # New meetup page
+  index.tsx               # Meetup list page
+  _app.tsx                # Shared Layout and Toast container
+  _document.tsx           # HTML document and favicon
+public/                   # Static assets
+styles/                   # Global CSS styles
 ```
 
-## Установка и запуск
+## Installation & Setup
 
-### Требования
+### Requirements
 
-- Node.js 20.9 или новее
+- Node.js 20.9 or later
 - npm
-- Доступ к MongoDB и коллекции `meetups`
+- Access to MongoDB and the `meetups` collection
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/SerhiiNakonechnyi12/react-meetups.git>
 cd react-meetups
 npm install
 npm run dev
 ```
 
-После запуска приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
+Once the development server is running, the application will be available at [http://localhost:3000](http://localhost:3000).
+
+### Environment Variables
+
+Create a `.env.local` file in the project root and add the following environment variable:
+
+```
+MONGODB_URI=your-mongodb-connection-string
+```
 
 ## npm scripts
 
-| Команда | Назначение |
+| Command | Description |
 | --- | --- |
-| `npm run dev` | Запускает локальный сервер разработки Next.js. |
-| `npm run build` | Создаёт оптимизированную production-сборку. |
-| `npm run start` | Запускает production-сервер после `npm run build`. |
+| `npm run dev` | Starts the local Next.js development server. |
+| `npm run build` | Creates an optimized production build. |
+| `npm run start` | Starts the production server after `npm run build`. |
 
-## Скриншоты
+## Screenshots
 
-Скриншоты размещены в `public/screenshots/`:
+Screenshots are available in `public/screenshots/`:
 
 ```md
-![Список встреч](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetups-list.png?raw=true)
-![Форма добавления встречи](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/new-meetup-form.png?raw=true)
-![Детали встречи](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetup-details.png?raw=true)
+![Meetup list](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetups-list.png?raw=true)
+![New meetup form](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/new-meetup-form.png?raw=true)
+![Meetup details](https://github.com/SerhiiNakonechnyi12/react-meetups/blob/main/public/screenshots/meetup-details.png?raw=true)
 ```
 
-## Важно для развёртывания
+## Deployment Notes
 
-Так как статическая генерация обращается к MongoDB, во время `npm run build` должно быть доступно сетевое соединение с базой данных.
+Since static generation fetches data from MongoDB, the database must be accessible during `npm run build`.
