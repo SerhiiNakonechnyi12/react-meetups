@@ -90,8 +90,6 @@ npm run dev
 | `npm run build` | Создаёт оптимизированную production-сборку. |
 | `npm run start` | Запускает production-сервер после `npm run build`. |
 
-Отдельные scripts для линтинга и тестов в текущей версии проекта не настроены.
-
 ## Скриншоты
 
 Скриншоты размещены в `public/screenshots/`:
