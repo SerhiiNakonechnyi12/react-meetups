@@ -106,6 +106,6 @@ Screenshots are available in `public/screenshots/`:
 ![New meetup form](./public/screenshots/new-meetup-form.png)
 ![Meetup details](./public/screenshots/meetup-details.png)
 
-## Deployment Notes
+## Deployment Notes 
 
 Since static generation fetches data from MongoDB, the database must be accessible during `npm run build`.
